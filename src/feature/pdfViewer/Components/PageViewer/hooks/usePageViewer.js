@@ -38,10 +38,12 @@ export const usePageviewer = () => {
   const onDropHandler = (e, i) => {
     e.preventDefault();
     const item = atom?.[p].find((item, i) => i === dragItem);
-    const deletedArr = atom.filter((ir, i) => i !== dragItem);
+    const deletedArr = atom?.[p].filter((ir, i) => i !== dragItem);
     const newArray = [...deletedArr.slice(0, i), item, ...deletedArr.slice(i)];
     const list = { ...atom, [p]: newArray };
     setPageNumber(i);
+    console.log(list);
+
     setAtom(list);
   };
   return {
